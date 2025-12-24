@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Property | Premium Sri Lankan Real Estate</title>
+    
+    <meta name="description" content="Classic Property: Discover premium luxury homes in Colombo, Sri Lanka. High-end villas and apartments for sale in LKR.">
+    <meta name="keywords" content="Real Estate Sri Lanka, Colombo Apartments, Classic Property, Buy Houses Colombo">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="24-01.png" type="image/x-icon">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <style>
+        :root {
+            --primary-orange: #E67E22;
+            --deep-black: #1A1A1A;
+            --soft-white: #F9FAFB;
+            --white: #FFFFFF;
+            --shadow: 0 20px 40px rgba(0,0,0,0.08);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* --- GLOBAL RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { background-color: #F0F2F5; color: var(--deep-black); padding: 15px; }
+
+        /* --- THEME SCROLLBAR --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--primary-orange); border-radius: 10px; }
+
+        /* --- FLOATING NAVBAR --- */
+        header {
+            max-width: 1200px;
+            margin: 0 auto 15px auto;
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 100px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 15px;
+            z-index: 1000;
+        }
+
+        /* Logo Styling */
+        .logo img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--deep-black); font-size: 0.9rem; font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary-orange); }
+
+        .btn-contact {
+            background: var(--primary-orange);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+        .btn-contact:hover { background: var(--deep-black); transform: scale(1.05); }
+
+        /* --- HERO BOX --- */
+        .hero-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 40px;
+            min-height: 85vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-text {
+            padding: 80px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+        h1 i { font-style: italic; font-weight: 400; color: #777; }
+        h1 b { color: var(--primary-orange); text-decoration: underline; text-underline-offset: 10px; }
+
+        .lead { font-size: 1.1rem; color: #555; line-height: 1.8; margin-bottom: 40px; }
+
+        .hero-visual {
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-bottom-left-radius: 200px;
+        }
+
+        .agent-card {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .agent-card img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .agent-info .small-logo img { height: 25px; }
+        .agent-info p { font-size: 0.75rem; color: #777; font-weight: 600; margin-top: 2px; }
+
+        /* --- MARQUEE SECTION --- */
+        .marquee-section {
+            max-width: 1240px;
+            margin: 60px auto;
+            overflow: hidden;
+            position: relative;
+            background: var(--white);
+            padding: 50px 0;
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .marquee-section::before, .marquee-section::after {
+            content: "";
+            position: absolute;
+            top: 0; width: 20%; height: 100%;
+            z-index: 2;
+        }
+        .marquee-section::before { left: 0; background: linear-gradient(to right, var(--white), transparent); }
+        .marquee-section::after { right: 0; background: linear-gradient(to left, var(--white), transparent); }
+
+        .marquee-content {
+            display: flex;
+            width: calc(250px * 10);
+            animation: scroll 25s linear infinite;
+        }
+
+        .marquee-item {
+            width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 700;
+            color: #ADB5BD;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 5)); }
+        }
+
+        /* --- AGENTS SECTION --- */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 10px; }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 100px;
+        }
+
+        .agent-card-main {
+            background: var(--white);
+            border-radius: 40px;
+            padding: 50px 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .agent-card-main:hover { transform: translateY(-10px); border: 1px solid var(--primary-orange); }
+
+        .agent-portrait {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            object-fit: cover;
+            border: 5px solid #F8F9FA;
+        }
+        
+        .agent-card-main .agent-brand-logo { height: 30px; margin: 0 auto 10px; display: block; }
+
+        .agent-card-main p { color: var(--primary-orange); font-weight: 700; font-size: 0.9rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .social-links { display: flex; justify-content: center; gap: 15px; }
+        .social-links a { 
+            width: 45px; height: 45px; border-radius: 50%; 
+            background: #F8F9FA; display: flex; align-items: center; 
+            justify-content: center; color: var(--deep-black); transition: 0.3s;
+        }
+        .social-links a:hover { background: var(--primary-orange); color: white; }
+
+        /* --- PROPERTIES SECTION --- */
+        .section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 3rem; }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .card:hover { transform: translateY(-10px); }
+
+        .card-img { height: 250px; background-size: cover; background-position: center; position: relative; }
+        .badge { position: absolute; top: 20px; left: 20px; background: var(--primary-orange); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; }
+
+        .card-body { padding: 30px; }
+        .price { color: var(--primary-orange); font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; display: block; }
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 15px; }
+        
+        .meta { display: flex; justify-content: space-between; padding-top: 20px; border-top: 1px solid #f0f0f0; color: #666; font-size: 0.85rem; }
+
+        /* --- FINAL CTA SECTION --- */
+        .cta-container {
+            max-width: 1240px;
+            margin: 100px auto;
+            background: var(--deep-black);
+            border-radius: 50px;
+            padding: 100px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-content { position: relative; z-index: 5; }
+        
+        .cta-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 20px;
+        }
+
+        .cta-container p {
+            font-size: 1.1rem;
+            color: #ADB5BD;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-dm {
+            background: var(--primary-orange);
+            color: white;
+            padding: 20px 45px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        .btn-dm:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3); }
+
+        .btn-join {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+        .btn-join:hover { background: var(--white); color: var(--deep-black); }
+
+        /* Background Animation Blob */
+        .cta-bg-blob {
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--primary-orange);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: 1;
+            animation: drift 15s infinite alternate ease-in-out;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 50px); }
+        }
+
+        /* --- PROFESSIONAL FOOTER --- */
+        .main-footer {
+            max-width: 1240px;
+            margin: 0 auto 40px;
+            background: var(--white);
+            border-radius: 40px;
+            padding: 80px 60px 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo img {
+            height: 55px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .footer-tagline {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .footer-social-wrap { display: flex; gap: 12px; }
+        .footer-social-wrap a {
+            width: 45px; height: 45px; border-radius: 50%;
+            background: #F8F9FA; display: flex; align-items: center;
+            justify-content: center; color: var(--deep-black); transition: var(--transition);
+        }
+        .footer-social-wrap a:hover { background: var(--primary-orange); color: white; transform: translateY(-5px); }
+
+        .footer-heading {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--deep-black);
+            position: relative;
+        }
+        .footer-heading::after {
+            content: ''; position: absolute; left: 0; bottom: -10px;
+            width: 35px; height: 3px; background: var(--primary-orange);
+        }
+
+        .footer-list { list-style: none; }
+        .footer-list li { margin-bottom: 18px; }
+        .footer-list a { 
+            text-decoration: none; color: #666; font-size: 0.95rem; 
+            font-weight: 500; transition: 0.3s; 
+        }
+        .footer-list a:hover { color: var(--primary-orange); padding-left: 8px; }
+
+        .footer-info { list-style: none; }
+        .footer-info li { 
+            display: flex; align-items: flex-start; gap: 12px; 
+            margin-bottom: 20px; color: #666; font-size: 0.95rem; 
+        }
+        .footer-info i { color: var(--primary-orange); flex-shrink: 0; margin-top: 3px; }
+
+        .newsletter-form {
+            display: flex;
+            background: #F8F9FA;
+            padding: 6px;
+            border-radius: 100px;
+            border: 1px solid #EEE;
+            transition: var(--transition);
+        }
+        .newsletter-form:focus-within { border-color: var(--primary-orange); }
+        .newsletter-form input {
+            border: none; background: transparent; padding: 12px 20px;
+            flex: 1; outline: none; font-size: 0.9rem; font-weight: 600;
+        }
+        .newsletter-form button {
+            background: var(--primary-orange); color: white; border: none;
+            width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+            transition: var(--transition); display: flex; align-items: center; justify-content: center;
+        }
+        .newsletter-form button:hover { background: var(--deep-black); }
+
+        .footer-copyright {
+            border-top: 1px solid #F0F0F0;
+            padding-top: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        .footer-copyright a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* --- BACK TO TOP --- */
+        #topBtn {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--primary-orange); color: white;
+            width: 50px; height: 50px; border-radius: 50%;
+            border: none; cursor: pointer; display: none; z-index: 1000;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 992px) {
+            header { padding: 10px 20px; width: 100%; top: 10px; }
+            .nav-links, .btn-contact { display: none; }
+            .hero-container { grid-template-columns: 1fr; border-radius: 30px; }
+            .hero-visual { height: 350px; order: 1; border-radius: 0 0 0 80px; }
+            .hero-text { padding: 40px 20px; order: 2; text-align: center; }
+            .property-grid, .agents-grid { grid-template-columns: 1fr; }
+            .marquee-section { border-radius: 20px; margin: 30px 10px; }
+            .agent-card { right: 20px; bottom: 20px; padding: 12px; }
+            .cta-container { margin: 60px 10px; padding: 60px 20px; border-radius: 30px; }
+            .cta-actions { flex-direction: column; align-items: stretch; }
+            
+            .main-footer { margin: 20px 10px; padding: 60px 24px 30px; border-radius: 30px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+            .footer-heading::after { left: 50%; transform: translateX(-50%); }
+            .footer-social-wrap, .footer-info li { justify-content: center; }
+            .footer-copyright { flex-direction: column; gap: 15px; text-align: center; }
+            .logo img { height: 35px; }
+            .footer-logo img { height: 45px; margin: 0 auto 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#home" class="logo">
+            <img src="23.png" alt="Classic Property Logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#agents">Agents</a></li>
+        </ul>
+        <a href="wa.me/+94741197336" target="_blank" class="btn-contact">
+            Contact Now <i data-lucide="phone-call" size="16"></i>
+        </a>
+    </header>
+
+    <main id="home" class="hero-container" data-aos="zoom-in">
+        <div class="hero-text">
+            <span style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; color: var(--primary-orange); font-weight: 800; margin-bottom: 15px;">Luxury Real Estate</span>
+            <h1>Find Your <i>Exclusive</i> <b>Dream Home</b></h1>
+            <p class="lead">Premium living in the heart of Sri Lanka. Discover hand-picked properties curated for the classic lifestyle.</p>
+            <a href="#properties" style="background: var(--deep-black); color: white; padding: 18px 40px; border-radius: 15px; text-decoration: none; font-weight: 700; align-self: flex-start; margin: 0 auto;">Explore Listings</a>
+        </div>
+        <div class="hero-visual">
+            <div class="agent-card">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Agent">
+                <div class="agent-info">
+                    <p>Top Rated Agent</p>
+                </div>
+                <i data-lucide="chevron-right" size="18" color="#E67E22"></i>
+            </div>
+        </div>
+    </main>
+
+    <div class="marquee-section" data-aos="fade-up">
+        <div class="marquee-content">
+            <div class="marquee-item"><i data-lucide="shield-check"></i> Certified</div>
+            <div class="marquee-item"><i data-lucide="award"></i> Premium</div>
+            <div class="marquee-item"><i data-lucide="gem"></i> Exclusive</div>
+            <div class="marquee-item"><i data-lucide="verified"></i> Trusted</div>
+            <div class="marquee-item"><i data-lucide="star"></i> 5-Star</div>
+            <div class="marquee-item"><i data-lucide="shield-check"></i> Certified</div>
+            <div class="marquee-item"><i data-lucide="award"></i> Premium</div>
+            <div class="marquee-item"><i data-lucide="gem"></i> Exclusive</div>
+            <div class="marquee-item"><i data-lucide="verified"></i> Trusted</div>
+            <div class="marquee-item"><i data-lucide="star"></i> 5-Star</div>
+        </div>
+    </div>
+
+    <section id="properties" class="section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Featured <i>Listings</i></h2>
+            <p style="color: #666;">Invest in the best of Sri Lanka</p>
+        </div>
+
+        <div class="property-grid">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80');">
+                    <span class="badge">Colombo 07</span>
+                </div>
+                <div class="card-body">
+                    <span class="price">LKR 95,000,000</span>
+                    <h3 class="card-title">The Royal Penthouse</h3>
+                    <div class="meta">
+                        <span>3 Beds</span> • <span>3 Baths</span> • <span>2,800 sqft</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80');">
+                    <span class="badge">Rajagiriya</span>
+                </div>
+                <div class="card-body">
+                    <span class="price">LKR 45,000,000</span>
+                    <h3 class="card-title">Skyline View Apartment</h3>
+                    <div class="meta">
+                        <span>2 Beds</span> • <span>2 Baths</span> • <span>1,450 sqft</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=800&q=80');">
+                    <span class="badge">Kandy</span>
+                </div>
+                <div class="card-body">
+                    <span class="price">LKR 72,000,000</span>
+                    <h3 class="card-title">Hillcrest Luxury Villa</h3>
+                    <div class="meta">
+                        <span>4 Beds</span> • <span>4 Baths</span> • <span>3,200 sqft</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agents" class="section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Meet Our <i>Expert</i> <b>Agents</b></h2>
+            <p style="color: #666;">Providing professional guidance for your property journey</p>
+        </div>
+
+        <div class="agents-grid">
+            <div class="agent-card-main" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80" class="agent-portrait" alt="Agent">
+                <img src="23.png" class="agent-brand-logo" alt="Classic Property">
+                <p>Principal Agent</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="linkedin" size="20"></i></a>
+                    <a href="#"><i data-lucide="instagram" size="20"></i></a>
+                    <a href="#"><i data-lucide="mail" size="20"></i></a>
+                </div>
+            </div>
+
+            <div class="agent-card-main" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" class="agent-portrait" alt="Agent">
+                <img src="23.png" class="agent-brand-logo" alt="Classic Property">
+                <p>Luxury Specialist</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="linkedin" size="20"></i></a>
+                    <a href="#"><i data-lucide="instagram" size="20"></i></a>
+                    <a href="#"><i data-lucide="mail" size="20"></i></a>
+                </div>
+            </div>
+
+            <div class="agent-card-main" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80" class="agent-portrait" alt="Agent">
+                <img src="23.png" class="agent-brand-logo" alt="Classic Property">
+                <p>Commercial Consultant</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="linkedin" size="20"></i></a>
+                    <a href="#"><i data-lucide="instagram" size="20"></i></a>
+                    <a href="#"><i data-lucide="mail" size="20"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-container" data-aos="zoom-in">
+        <div class="cta-bg-blob"></div>
+        <div class="cta-content">
+            <h2>Looking for your <i>perfect</i> place?</h2>
+            <p>Become a member of our exclusive network or send us a message to find the property you've always wanted.</p>
+            <div class="cta-actions">
+                <a href="wa.me/+94741197336" target="_blank" class="btn-dm">
+                    DM Us Now <i data-lucide="message-circle"></i>
+                </a>
+                <a href="wa.me/+94741197336" target="_blank" class="btn-join">Become a Member</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col" data-aos="fade-up">
+                <a href="#home" class="footer-logo">
+                    <img src="23.png" alt="Classic Property Logo">
+                </a>
+                <p class="footer-tagline">
+                    Redefining luxury real estate in Sri Lanka. We curate the most exclusive properties for the most discerning clients.
+                </p>
+                <div class="footer-social-wrap">
+                    <a href="#"><i data-lucide="facebook" size="20"></i></a>
+                    <a href="#"><i data-lucide="instagram" size="20"></i></a>
+                    <a href="#"><i data-lucide="linkedin" size="20"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+                <h4 class="footer-heading">Navigation</h4>
+                <ul class="footer-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#properties">Properties</a></li>
+                    <li><a href="#agents">Agents</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+                <h4 class="footer-heading">Contact Us</h4>
+                <ul class="footer-info">
+                    <li><i data-lucide="map-pin" size="18"></i> 38/4/1 Mawanella , Sri Lanka</li>
+                    <li><i data-lucide="phone" size="18"></i> +94 74 119 7336</li>
+                    <li><i data-lucide="mail" size="18"></i> classicbeatzofficialx@gmail.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+                <h4 class="footer-heading">Newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit"><i data-lucide="send" size="18"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <p>Copyright © 2025. All Rights Reserved.</p>
+            <p>Powered by <a href="https://classicbeatz.netlify.app" target="_blank">ClassicBeatz</a></p>
+        </div>
+    </footer>
+
+    <button id="topBtn"><i data-lucide="arrow-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        lucide.createIcons();
+        AOS.init({ once: true, duration: 800 });
+
+        const topBtn = document.getElementById('topBtn');
+        window.onscroll = () => {
+            if (window.scrollY > 400) { topBtn.style.display = "block"; } 
+            else { topBtn.style.display = "none"; }
+        };
+        topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Smooth Scroll Logic for Nav Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        const cacheName = 'classic-property-v1';
+const assets = [
+  './',
+  './index.html',
+  './23.png',
+  'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap',
+  'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css',
+  'https://unpkg.com/lucide@latest'
+];
+
+// Install Service Worker
+self.addEventListener('install', evt => {
+  evt.waitUntil(
+    caches.open(cacheName).then(cache => {
+      console.log('Caching shell assets');
+      cache.addAll(assets);
+    })
+  );
+});
+
+// Activate Event
+self.addEventListener('activate', evt => {
+  evt.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(keys
+        .filter(key => key !== cacheName)
+        .map(key => caches.delete(key))
+      );
+    })
+  );
+});
+
+// Fetch Event (Offline support)
+self.addEventListener('fetch', evt => {
+  evt.respondWith(
+    caches.match(evt.request).then(cacheRes => {
+      return cacheRes || fetch(evt.request);
+    })
+  );
+});
+    </script>
+</body>
+</html>
